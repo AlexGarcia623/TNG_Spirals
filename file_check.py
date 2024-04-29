@@ -51,21 +51,22 @@ for target in best_ids:
         metals_map    = group['Metallicity Map'] ## log O/H + 12
 
         ## Make plots
-        all_maps = [
-            gas_mass_map, star_mass_map, sfr_map, metals_map
-        ]
-        maps_names = [
-            'gas_mass', 'star_mass', 'sfr', 'metals'
-        ]
-        for index, Map in enumerate(all_maps):
-            plt.clf()
+        if make_plots:
+            all_maps = [
+                gas_mass_map, star_mass_map, sfr_map, metals_map
+            ]
+            maps_names = [
+                'gas_mass', 'star_mass', 'sfr', 'metals'
+            ]
+            for index, Map in enumerate(all_maps):
+                plt.clf()
 
-            fig = plt.figure(figsize=(8,8))
-            ax = plt.gca()
+                fig = plt.figure(figsize=(8,8))
+                ax = plt.gca()
 
-            ax.imshow(Map, norm=LogNorm(), cmap='cmr.dusk')
+                ax.imshow(Map, norm=LogNorm(), cmap='cmr.dusk')
 
-            ax.axis('off')
-            plt.tight_layout()
+                ax.axis('off')
+                plt.tight_layout()
 
-            plt.savefig('./best_plots/'+ f'{target}_{maps_names[index]}.pdf',bbox_inches='tight')
+                plt.savefig('./best_plots/'+ f'{target}_{maps_names[index]}.pdf',bbox_inches='tight')
